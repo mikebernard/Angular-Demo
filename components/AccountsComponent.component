@@ -1,0 +1,22 @@
+<apex:component controller="RetrieveAccountsController">
+	<script type="text/javascript">
+		if(!window.Accounts){
+			window.Accounts = {};
+		}
+
+		Accounts.retrieveAccounts = function(success, failure){
+			return Visualforce.remoting.Manager.invokeAction(
+				'{!$RemoteAction.RetrieveAccountsController.retrieveAccounts}',
+				function(result, event){
+					if(event.status){
+						success.apply(this, [result]);
+					} else {
+						failure.apply(this, [event, result]);
+					}
+				},
+				{escape: false, buffer: false}
+			);
+		};
+
+	</script>
+</apex:component>

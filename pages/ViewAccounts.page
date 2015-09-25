@@ -1,0 +1,33 @@
+<apex:page
+	showHeader="true"
+	sidebar="true"
+	controller="RetrieveAccountsController">
+
+	<c:Includes/>
+
+	<apex:includeScript value="{!URLFOR($Resource.ViewAccountsApp)}"/>
+	<apex:includeScript value="{!URLFOR($Resource.account_model)}"/>
+	<apex:includeScript value="{!URLFOR($Resource.accountService)}"/>
+
+	<c:AccountsComponent/>
+
+	<div ng-app="ViewAccountsApp" ng-controller="account.controller">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table class="table table-hover">
+				<thead>
+					<tr>
+						<th ng-click="setOrderField('name')">Name</th>
+						<th ng-click="setOrderField('type')">Type</th>
+					</tr>
+				</thead>
+					<tr ng-repeat="account in accounts | orderBy : orderField">
+						<td>{{account.name}}</td>
+						<td>{{account.type}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</apex:page>

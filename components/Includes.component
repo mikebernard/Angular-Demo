@@ -1,0 +1,11 @@
+<apex:component>
+	<apex:includeScript value="{!URLFOR($Resource.jquery)}"/>
+	<apex:includeScript value="{!URLFOR($Resource.angular)}"/>
+	<apex:includeScript value="{!URLFOR($Resource.bootstrap_js)}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.bootstrap_theme_css)}"/>
+	<apex:stylesheet value="{!URLFOR($Resource.bootstrap_css)}"/>
+
+	<script type="text/javascript">
+		jQuery.noConflict();
+	</script>
+</apex:component>
